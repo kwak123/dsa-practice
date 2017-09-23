@@ -28,4 +28,34 @@ describe('insertion.js', function() {
         var equal = _.isEqual(sortArray, primitiveArray.sort(filter));
         expect(equal).to.equal(true);
     });
+
+    it('should sort an array of strings of even length', function() {
+        var primitiveArray = ['hi', 'this', 'is', 'a', 'test', 'of', 'how', 'to', 'sort', 'filters'];
+        var sortArray = insertSort(['hi', 'this', 'is', 'a', 'test', 'of', 'how', 'to', 'sort', 'filters']);
+        var equal = _.isEqual(sortArray, primitiveArray.sort());
+        expect(equal).to.equal(true);
+    });
+
+    it('should sort an array of strings of odd length', function() {
+        var primitiveArray = ['hi', 'this', 'is', 'a', 'test', 'of', 'how', 'to', 'sort', 'filters', 'again'];
+        var sortArray = insertSort(['hi', 'this', 'is', 'a', 'test', 'of', 'how', 'to', 'sort', 'filters', 'again']);
+        var equal = _.isEqual(sortArray, primitiveArray.sort());
+        expect(equal).to.equal(true);
+    });
+
+    it('should stable sort an array of strings of even length, given a filter', function() {
+        var filter = (a, b) => a.length - b.length;
+        var expectedArray = ['a', 'hi', 'is', 'of', 'to', 'how', 'sort', 'test', 'this', 'filters'];
+        var sortArray = insertSort(['hi', 'this', 'is', 'a', 'test', 'of', 'how', 'to', 'sort', 'filters'], filter);
+        var equal = _.isEqual(sortArray, expectedArray);
+        expect(equal).to.equal(true);
+    });
+
+    it('should stable sort an array of strings of odd length, given a filter', function() {
+        var filter = (a, b) => a.length - b.length;
+        var expectedArray = ['a', 'hi', 'is', 'of', 'to', 'how', 'sort', 'test', 'this', 'again', 'filters'];
+        var sortArray = insertSort(['hi', 'this', 'is', 'a', 'test', 'of', 'how', 'to', 'sort', 'filters', 'again'], filter);
+        var equal = _.isEqual(sortArray, expectedArray);
+        expect(equal).to.equal(true);
+    });
 });

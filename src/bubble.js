@@ -23,5 +23,6 @@ var bubbleSort = function(array, filter) {
             }
         }
     }
+    
     return array;
 }
