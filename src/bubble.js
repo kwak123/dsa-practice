@@ -1,4 +1,4 @@
-var bubbleSort = function(array, filter) {
+var bubbleSort = function(array, filter = (a, b) => a < b ? -1 : a > b ?  1 : 0) {
     var swap = function(array, index1, index2) {
         var holder = array[index1];
         array[index1] = array[index2];
@@ -7,13 +7,7 @@ var bubbleSort = function(array, filter) {
 
     for (var i = array.length; i > 0; i--) {
         for (var j = 0; j < i - 1; j++) {
-            var result;
-            if (filter) {
-                result = filter(array[j], array[j + 1]);
-            } else {
-                result = array[j] < array[j + 1] ? -1 :
-                         array[j] > array[j + 1]  ?  1 : 0;
-            }
+            var result = filter(array[j], array[j + 1]);
             if (result === 0) {
                 if (array[j] > array[j+1]) {
                     swap(array, j, j + 1);
