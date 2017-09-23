@@ -1,22 +1,22 @@
-var bubbleSort = function(array, filter = (a, b) => a < b ? -1 : a > b ?  1 : 0) {
-    var swap = function(array, index1, index2) {
-        var holder = array[index1];
-        array[index1] = array[index2];
-        array[index2] = holder;
+var bubbleSort = function(object, filter = (a, b) => a < b ? -1 : a > b ?  1 : 0) {
+    var swap = function(arrayLike, index1, index2) {
+        var holder = arrayLike[index1];
+        arrayLike[index1] = arrayLike[index2];
+        arrayLike[index2] = holder;
     }
 
-    for (var i = array.length; i > 0; i--) {
+    for (var i = object.length; i > 0; i--) {
         for (var j = 0; j < i - 1; j++) {
-            var result = filter(array[j], array[j + 1]);
+            var result = filter(object[j], object[j + 1]);
             if (result === 0) {
-                if (array[j] > array[j+1]) {
-                    swap(array, j, j + 1);
+                if (object[j] > object[j+1]) {
+                    swap(object, j, j + 1);
                 }
             } else if (result > 0) {
-                swap(array, j, j + 1);
+                swap(object, j, j + 1);
             }
         }
     }
     
-    return array;
+    return object;
 }

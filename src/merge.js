@@ -1,34 +1,34 @@
-var mergeSort = function(obj, filter = (a, b) => a < b ? -1 : a > b ?  1 : 0) {
-    var sort = function(array) {
-        if (array.length <= 1) { return array; }
+var mergeSort = function(object, filter = (a, b) => a < b ? -1 : a > b ?  1 : 0) {
+    var sort = function(arrayLike) {
+        if (arrayLike.length <= 1) { return arrayLike; }
         
-        var midIndex = Math.floor(array.length / 2);
-        var leftArray = array.slice(0, midIndex);
-        var rightArray = array.slice(midIndex);
+        var midIndex = Math.floor(arrayLike.length / 2);
+        var leftArray = arrayLike.slice(0, midIndex);
+        var rightArray = arrayLike.slice(midIndex);
 
         return merge(sort(leftArray), sort(rightArray));
     }
 
-    var merge = function(array1, array2) {
+    var merge = function(leftHalf, rightHalf) {
         var merged = [];
-        while (array1.length && array2.length) {
-            var result = filter(array1[0], array2[0]);
+        while (leftHalf.length && rightHalf.length) {
+            var result = filter(leftHalf[0], rightHalf[0]);
             if (result === 0) {
-                merged.push(array1[0] < array2[0] ? array1.shift() : array2.shift());
+                merged.push(leftHalf[0] < rightHalf[0] ? leftHalf.shift() : rightHalf.shift());
             } else {
-                merged.push(result < 0 ? array1.shift() : array2.shift());
+                merged.push(result < 0 ? leftHalf.shift() : rightHalf.shift());
             }
         }
-        while (array1.length) {
-            merged.push(array1.shift());
+        while (leftHalf.length) {
+            merged.push(leftHalf.shift());
         }
-        while (array2.length) {
-            merged.push(array2.shift());
+        while (rightHalf.length) {
+            merged.push(rightHalf.shift());
         }
         return merged;
     }
 
-    if (Array.isArray(obj)) {
-        return sort(obj);
+    if (Array.isArray(object)) {
+        return sort(object);
     }
 }
