@@ -1,4 +1,4 @@
-var mergeSort = function(obj, comparator = null) {
+var mergeSort = function(obj, filter = (a, b) => a - b) {
 
     var sort = function(array) {
         if (array.length <= 1) { return array; }
@@ -11,17 +11,18 @@ var mergeSort = function(obj, comparator = null) {
     }
 
     var merge = function(array1, array2) {
-        var result = [];
+        var merged = [];
         while (array1.length && array2.length) {
-            result.push(array1[0] < array2[0] ? array1.shift() : array2.shift());
+            var result = filter(array1[0], array2[0]);
+            merged.push(result < 0 ? array1.shift() : array2.shift());
         }
         while (array1.length) {
-            result.push(array1.shift());
+            merged.push(array1.shift());
         }
         while (array2.length) {
-            result.push(array2.shift());
+            merged.push(array2.shift());
         }
-        return result;
+        return merged;
     }
 
     if (Array.isArray(obj)) {

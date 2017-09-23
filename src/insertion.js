@@ -1,11 +1,12 @@
-var insertSort = function(array) {
+var insertSort = function(array, filter = (a, b) => a - b) {
     var sortedArray = [];
     sortedArray.push(array.shift());
     while (array.length > 0) {
         var holder = array.shift();
         var replace = sortedArray.length;
         for (var i = 0; i < sortedArray.length; i++) {
-            if (sortedArray[i] > holder) {  
+            var result = filter(sortedArray[i], holder);
+            if (result > 0) {
                 replace = i;
                 break;
             }
