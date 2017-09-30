@@ -13,11 +13,7 @@ var mergeSort = function(object, filter = (a, b) => a < b ? -1 : a > b ?  1 : 0)
         var merged = [];
         while (leftHalf.length && rightHalf.length) {
             var result = filter(leftHalf[0], rightHalf[0]);
-            if (result === 0) {
-                merged.push(leftHalf[0] < rightHalf[0] ? leftHalf.shift() : rightHalf.shift());
-            } else {
-                merged.push(result < 0 ? leftHalf.shift() : rightHalf.shift());
-            }
+            merged.push(result <= 0 ? leftHalf.shift() : rightHalf.shift());
         }
         while (leftHalf.length) {
             merged.push(leftHalf.shift());

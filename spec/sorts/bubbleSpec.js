@@ -58,4 +58,13 @@ describe('bubble.js', function() {
         var equal = _.isEqual(sortArray, expectedArray);
         expect(equal).to.equal(true);
     });
+
+    // it('should sort an array of objects, given a filter', function() {
+    //     var filter = (a, b, field) => a.field - b.field;
+    //     var objectArray = [{size: 2}, {size: 8}, {size: 6}, {size: 7}, {size: 9}, {size: 3}];
+    //     var sortArray = bubbleSort([{size: 2}, {size: 8}, {size: 6}, {size: 7}, {size: 9}, {size: 3}], filter);
+    //     console.log(sortArray);
+    //     var equal = _.isEqual(sortArray, objectArray.sort((a, b) => a.size > b.size));
+    //     expect(equal).to.equal(true);
+    // });
 });
