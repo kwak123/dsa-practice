@@ -6,9 +6,9 @@
  */
 
 describe('binary.js', function() {
-   it('should find an object in less steps than a linear search', function() {
+  it('should find an object in less steps than a linear search', function() {
 
-   });
+  });
 });
 
 
@@ -17,7 +17,7 @@ describe('binary.js', function() {
 
 
 var linearSearch = function(array, expected) {
-    var result;
-    var count = 0;
-    return [result, count];
+  var result;
+  var count = 0;
+  return [result, count];
 };
