@@ -45,16 +45,18 @@ describe('bubble.js', function() {
 
     it('should stable sort an array of strings of even length, given a filter', function() {
         var filter = (a, b) => a.length - b.length;
-        var expectedArray = ['a', 'hi', 'is', 'of', 'to', 'how', 'sort', 'test', 'this', 'filters'];
-        var sortArray = bubbleSort(['hi', 'this', 'is', 'a', 'test', 'of', 'how', 'to', 'sort', 'filters'], filter);
+        var sampleArray = ['hi', 'this', 'is', 'a', 'test', 'of', 'how', 'to', 'sort', 'filters'];
+        var expectedArray = ['a', 'hi', 'is', 'of', 'to', 'how', 'this', 'test', 'sort', 'filters'];
+        var sortArray = bubbleSort(sampleArray, filter);
         var equal = _.isEqual(sortArray, expectedArray);
         expect(equal).to.equal(true);
     });
 
     it('should stable sort an array of strings of odd length, given a filter', function() {
         var filter = (a, b) => a.length - b.length;
-        var expectedArray = ['a', 'hi', 'is', 'of', 'to', 'how', 'sort', 'test', 'this', 'again', 'filters'];
-        var sortArray = bubbleSort(['hi', 'this', 'is', 'a', 'test', 'of', 'how', 'to', 'sort', 'filters', 'again'], filter);
+        var sampleArray = ['hi', 'this', 'is', 'a', 'test', 'of', 'how', 'to', 'sort', 'filters', 'again'];
+        var expectedArray = ['a', 'hi', 'is', 'of', 'to', 'how', 'this', 'test', 'sort', 'again', 'filters'];
+        var sortArray = bubbleSort(sampleArray, filter);
         var equal = _.isEqual(sortArray, expectedArray);
         expect(equal).to.equal(true);
     });
