@@ -8,11 +8,6 @@ var selectSort = function(array, filter = (a, b) => a < b ? -1 : a > b ?  1 : 0)
                 if (result < 0) {
                     min = array[i];
                     index = i;
-                } else if (result === 0) {
-                    if (array[i] < min) {
-                        min = array[i];
-                        index = i;
-                    }
                 }
             }
         }
