@@ -54,4 +54,21 @@ describe('merge.js', function() {
     var sortArray = mergeSort(sampleArray, filter);
     expect(sortArray).to.eql(expectedArray);
   });
+
+  it('should sort an array of objects, given a filter', function() {
+    var filter = (a, b) => a.size - b.size;
+    var objectArray = [{size: 2}, {size: 8}, {size: 6}, {size: 7}, {size: 9}, {size: 3}];
+    var sortArray = bubbleSort(objectArray, filter);
+    expect(sortArray).to.eql(objectArray.sort(filter));
+  });
+
+  it('should stable sort an array of objects, given a filter', function() {
+    var filter = (a, b) => a.size - b.size;
+    var objectArray = [{size: 2, name: 'a'}, {size: 8, name: 'b'}, {size: 6, name: 'd'}, {size: 7, name: 'g'}, 
+                      {size: 9, name: 'z'}, {size: 6, name: 'g'}, {size: 3, name: 'r'}, {size: 8, name: 'd'}];
+    var expectArray = [{size: 2, name: 'a'}, {size: 3, name: 'r'}, {size: 6, name: 'd'}, {size: 6, name: 'g'},
+                      {size: 7, name: 'g'}, {size: 8, name: 'b'}, {size: 8, name: 'd'}, {size: 9, name: 'z'}];
+    var sortArray = bubbleSort(objectArray, filter);
+    expect(sortArray).to.eql(expectArray);
+  });
 });

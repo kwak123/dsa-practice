@@ -16,5 +16,5 @@ var mergeSort = function(object, filter = (a, b) => a < b ? -1 : a > b ?  1 : 0)
       while (rightHalf.length) { merged.push(rightHalf.shift()); }
       return merged;
   }
-  if (Array.isArray(object)) { return sort(object); }
+  return sort(object);
 }
